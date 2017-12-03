@@ -3,7 +3,7 @@ group 'com.softwareonpurpose'
 apply plugin: 'java'
 
 sourceCompatibility = 1.9
-version = '0.0.1'
+version = '1.0.0'
 
 jar {
     manifest {
@@ -16,10 +16,10 @@ repositories {
 }
 
 dependencies {
+    compile 'com.google.code.gson:gson:2.8.2'
     compile 'ch.qos.logback:logback-core:1.2.3'
     compile 'ch.qos.logback:logback-classic:1.2.3'
     compile 'org.slf4j:slf4j-api:1.7.25'
-    compile 'com.google.code.gson:gson:2.8.0'
     testCompile group: 'org.testng', name: 'testng', version: '6.9.4'
 }
 
