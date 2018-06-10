@@ -32,6 +32,11 @@ public class IndentManagerTest {
         return new Object[][]{{1}, {2}, {3}, {5}, {8}};
     }
 
+    @DataProvider
+    public static Object[][] decrementingScenarios() {
+        return new Object[][]{{1, ""}, {2, "  "}, {3, "    "}, {0, ""}};
+    }
+
     @Test
     public void rootLevelOnDefaultInstantiation() {
         String message = "On default instantiation, IndentManager failed to be at root level";
@@ -104,7 +109,7 @@ public class IndentManagerTest {
         Assert.assertEquals(manager.format(message), String.format("%s%s", indentation, message), failureMessage);
     }
 
-    @Test
+    @Test(dataProvider = "decrementingScenarios")
     public void decrementOnce(int levelsToIncrement, String expectedIndentation) {
         final String message = "Message Text";
         final IndentManager manager = IndentManager.getInstance();
