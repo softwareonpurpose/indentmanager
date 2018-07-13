@@ -53,6 +53,46 @@ public class IndentManager {
     }
 
     /**
+     * Increment indentation level by one
+     */
+    @SuppressWarnings("WeakerAccess")
+    public void increment() {
+        increment(1);
+    }
+
+    /**
+     * Increment indentation by a specific number of levels
+     *
+     * @param levels Number of levels to increment the current level
+     */
+    @SuppressWarnings("WeakerAccess")
+    public void increment(int levels) {
+        indentationLevel += levels;
+    }
+
+    /**
+     * Decrement indentation level by one
+     */
+    @SuppressWarnings("WeakerAccess")
+    public void decrement() {
+        decrement(1);
+    }
+
+    /**
+     * Decrement indentation by a specific number of levels
+     *
+     * @param levels Number of levels to decrement the current level
+     */
+    @SuppressWarnings("WeakerAccess")
+    public void decrement(int levels) {
+        if (indentationLevel < levels) {
+            indentationLevel = 0;
+        } else {
+            indentationLevel -= levels;
+        }
+    }
+
+    /**
      * @return Whether IndentManager is at root level
      */
     @SuppressWarnings("WeakerAccess")
@@ -70,46 +110,6 @@ public class IndentManager {
     public String format(String line) {
         boolean lineIsNullOrEmpty = ((line == null) || (line.length() == 0));
         return lineIsNullOrEmpty ? "" : String.format("%s%s", getIndentation(), line);
-    }
-
-    /**
-     * Increment indentation level by one
-     */
-    @SuppressWarnings("WeakerAccess")
-    public void increment() {
-        increment(1);
-    }
-
-    /**
-     * Increment indentation by a specific number of levels
-     *
-     * @param numberOfLevels Number of levels to increment the current level
-     */
-    @SuppressWarnings("WeakerAccess")
-    public void increment(int numberOfLevels) {
-        indentationLevel += numberOfLevels;
-    }
-
-    /**
-     * Decrement indentation level by one
-     */
-    @SuppressWarnings("WeakerAccess")
-    public void decrement() {
-        decrement(1);
-    }
-
-    /**
-     * Decrement indentation by a specific number of levels
-     *
-     * @param numberOfLevels Number of levels to decrement the current level
-     */
-    @SuppressWarnings("WeakerAccess")
-    public void decrement(int numberOfLevels) {
-        if (indentationLevel < numberOfLevels) {
-            indentationLevel = 0;
-        } else {
-            indentationLevel -= numberOfLevels;
-        }
     }
 
     private String getIndentation() {
