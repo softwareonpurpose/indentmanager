@@ -1,5 +1,5 @@
 /**
- * Copyright 2017 Craig A. Stockton
+ * Copyright 2018 Craig A. Stockton
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -98,7 +98,13 @@ public class IndentManager {
         decrement(1);
     }
 
-    private void decrement(int numberOfLevels) {
+    /**
+     * Decrement indentation by a specific number of levels
+     *
+     * @param numberOfLevels Number of levels to decrement the current level
+     */
+    @SuppressWarnings("WeakerAccess")
+    public void decrement(int numberOfLevels) {
         if (indentationLevel < numberOfLevels) {
             indentationLevel = 0;
         } else {
