@@ -64,6 +64,15 @@ public class IndentManagerTest {
     }
 
     @Test
+    public void rootLevelAfterLevelDecrementedToRoot(){
+        String message = "After decrementing to zero indentations, IndentManager failed to be at root level";
+        IndentManager manager = IndentManager.getInstance();
+        manager.increment();
+        manager.decrement();
+        Assert.assertTrue(manager.isAtRootLevel(), message);
+    }
+
+    @Test
     public void indentationOnPositiveInitializedInstantiation() {
         String message = "On initialized instantiation, indent failed to be the initialized number of spaces";
         Assert.assertEquals(IndentManager.getInstance(5).format("."), ".", message);
@@ -92,6 +101,13 @@ public class IndentManagerTest {
         IndentManager indentManager = IndentManager.getInstance(spacesPerLevel);
         indentManager.increment();
         Assert.assertEquals(indentManager.format(null), "", "Null message failed to return empty String");
+    }
+
+    @Test(dataProvider = "positiveSpacesPerLevel")
+    public void emptyMessage(int spacesPerLevel) {
+        IndentManager indentManager = IndentManager.getInstance(spacesPerLevel);
+        indentManager.increment();
+        Assert.assertEquals(indentManager.format(""), "", "Empty message failed to return empty String");
     }
 
     @Test(dataProvider = "multiplePositiveSpacesPerLevel")
