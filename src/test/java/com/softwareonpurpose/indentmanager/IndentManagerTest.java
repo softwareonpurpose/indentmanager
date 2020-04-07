@@ -56,6 +56,14 @@ public class IndentManagerTest {
     }
 
     @Test
+    public void rootLevelAfterLevelIncremented(){
+        String message = "After increment, IndentManager was still at root level";
+        IndentManager manager = IndentManager.getInstance();
+        manager.increment();
+        Assert.assertFalse(manager.isAtRootLevel(), message);
+    }
+
+    @Test
     public void indentationOnPositiveInitializedInstantiation() {
         String message = "On initialized instantiation, indent failed to be the initialized number of spaces";
         Assert.assertEquals(IndentManager.getInstance(5).format("."), ".", message);
