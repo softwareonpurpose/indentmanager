@@ -1,5 +1,6 @@
+
 /*
-  Copyright 2020 Craig A. Stockton
+  Copyright 2021 Craig A. Stockton
   <p>
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -19,9 +20,7 @@ package com.softwareonpurpose.indentmanager;
  * Used to manage the level of indentation (2 spaces per level by default), with clients incrementing/decrementing
  * the level
  */
-@SuppressWarnings("WeakerAccess")
 public class IndentManager {
-
     private final static int DEFAULT_LEVEL = 2;
     private final int spacesPerLevel;
     private int indentationLevel;
@@ -35,7 +34,6 @@ public class IndentManager {
      *
      * @return Instance of IndentManger
      */
-    @SuppressWarnings("WeakerAccess")
     public static IndentManager getInstance() {
         return new IndentManager(DEFAULT_LEVEL);
     }
@@ -47,25 +45,23 @@ public class IndentManager {
      * @param spacesPerLevel Number of spaces to indent per level of indentation
      * @return Instance of IndentManager
      */
-    @SuppressWarnings("WeakerAccess")
     public static IndentManager getInstance(int spacesPerLevel) {
-        return new IndentManager(spacesPerLevel < 0 ? 0 : spacesPerLevel);
+        int spacesPerLevelZeroOrGreater = Math.max(spacesPerLevel, 0);
+        return new IndentManager(spacesPerLevelZeroOrGreater);
     }
 
     /**
      * Increment indentation level by one
      */
-    @SuppressWarnings("WeakerAccess")
     public void increment() {
         increment(1);
     }
 
     /**
-     * Increment indentation by a specific number of levels
+     * Increment indentation by a specified number of levels
      *
      * @param levels Number of levels to increment the current level
      */
-    @SuppressWarnings("WeakerAccess")
     public void increment(int levels) {
         indentationLevel += levels;
     }
@@ -73,17 +69,15 @@ public class IndentManager {
     /**
      * Decrement indentation level by one
      */
-    @SuppressWarnings("WeakerAccess")
     public void decrement() {
         decrement(1);
     }
 
     /**
-     * Decrement indentation by a specific number of levels
+     * Decrement indentation by a specified number of levels
      *
      * @param levels Number of levels to decrement the current level
      */
-    @SuppressWarnings("WeakerAccess")
     public void decrement(int levels) {
         if (indentationLevel < levels) {
             indentationLevel = 0;
@@ -95,7 +89,6 @@ public class IndentManager {
     /**
      * @return Whether IndentManager is at root level
      */
-    @SuppressWarnings("WeakerAccess")
     public boolean isAtRootLevel() {
         return indentationLevel == 0;
     }
@@ -106,7 +99,6 @@ public class IndentManager {
      * @param line The line of text to be formatted
      * @return Formatted String value
      */
-    @SuppressWarnings("WeakerAccess")
     public String format(String line) {
         boolean lineIsNullOrEmpty = ((line == null) || (line.length() == 0));
         return lineIsNullOrEmpty ? "" : String.format("%s%s", getIndentation(), line);
