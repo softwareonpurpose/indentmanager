@@ -33,7 +33,7 @@ public class IndentManagerTest {
     }
 
     @DataProvider
-    public static Object[][] decrementingScenarios() {
+    public static Object[][] decrementOnceScenarios() {
         return new Object[][]{{1, ""}, {2, "  "}, {3, "    "}, {0, ""}};
     }
 
@@ -45,7 +45,7 @@ public class IndentManagerTest {
 
     @Test
     public void indentationOnDefaultInstantiation() {
-        String message = "On default instantiation, indent failed to be two spaces";
+        String message = "On default instantiation, indent failed to be zero spaces";
         Assert.assertEquals(IndentManager.getInstance().format("."), ".", message);
     }
 
@@ -133,7 +133,7 @@ public class IndentManagerTest {
         Assert.assertEquals(manager.format(message), String.format("%s%s", indentation, message), failureMessage);
     }
 
-    @Test(dataProvider = "decrementingScenarios")
+    @Test(dataProvider = "decrementOnceScenarios")
     public void decrementOnce(int levelsToIncrement, String expectedIndentation) {
         final String message = "Message Text";
         final IndentManager manager = IndentManager.getInstance();
@@ -143,5 +143,10 @@ public class IndentManagerTest {
         String failureMessage = String.format(failureMessageFormat, levelsToIncrement, expectedIndentation);
         Assert.assertEquals(manager.format(message), String.format("%s%s", expectedIndentation, message),
                 failureMessage);
+    }
+
+    @Test(dataProvider = "decrementLevelsScenarios")
+    public void decrementMultipleLevels(int levelsToDecrement, String expectedIndentation){
+        Assert.fail();
     }
 }
