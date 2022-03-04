@@ -4,6 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.Locale;
+
 @Test
 public class IndentManagerTest {
     @DataProvider
@@ -35,6 +37,13 @@ public class IndentManagerTest {
     @DataProvider
     public static Object[][] decrementOnceScenarios() {
         return new Object[][]{{1, ""}, {2, "  "}, {3, "    "}, {0, ""}};
+    }
+
+    @DataProvider
+    public static Object[][] decrementLevelsScenarios() {
+        return new Object[][]{
+                {0},{5},{9}
+        };
     }
 
     @Test
@@ -146,7 +155,15 @@ public class IndentManagerTest {
     }
 
     @Test(dataProvider = "decrementLevelsScenarios")
-    public void decrementMultipleLevels(int levelsToDecrement, String expectedIndentation){
-        Assert.fail();
+    public void decrementMultipleLevels(int levelsToDecrement){
+        final String message = "Message Text";
+        String failureMessageFormat = "After incrementing by %d and decrementing by %d, indentation failed to be '%s'";
+        int levelsToIncrement = levelsToDecrement + 2;
+        String expectedIndentation = "    ";
+        String failureMessage = String.format(failureMessageFormat, levelsToIncrement, levelsToDecrement, expectedIndentation);
+        final IndentManager manager = IndentManager.getInstance();
+        manager.increment(levelsToIncrement);
+        manager.decrement(levelsToDecrement);
+        Assert.assertEquals(manager.format(message), String.format("%s%s", expectedIndentation, message), failureMessage);
     }
 }
