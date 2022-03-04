@@ -21,7 +21,7 @@ package com.softwareonpurpose.indentmanager;
  * the level
  */
 public class IndentManager {
-    private final static int DEFAULT_LEVEL = 2;
+    private final static int DEFAULT_SPACES_PER_LEVEL = 2;
     private final int spacesPerLevel;
     private int indentationLevel;
 
@@ -35,7 +35,7 @@ public class IndentManager {
      * @return Instance of IndentManger
      */
     public static IndentManager getInstance() {
-        return new IndentManager(DEFAULT_LEVEL);
+        return new IndentManager(DEFAULT_SPACES_PER_LEVEL);
     }
 
     /**
