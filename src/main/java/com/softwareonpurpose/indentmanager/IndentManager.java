@@ -79,11 +79,7 @@ public class IndentManager {
      * @param levels Number of levels to decrement the current level
      */
     public void decrement(int levels) {
-        if (indentationLevel < levels) {
-            indentationLevel = 0;
-        } else {
-            indentationLevel -= levels;
-        }
+        indentationLevel = (indentationLevel < levels) ? 0 : (indentationLevel -= levels);
     }
 
     /**
