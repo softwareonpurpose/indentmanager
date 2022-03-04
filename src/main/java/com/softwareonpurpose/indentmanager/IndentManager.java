@@ -96,8 +96,7 @@ public class IndentManager {
      * @return Formatted String value
      */
     public String format(String line) {
-        boolean lineIsNullOrEmpty = ((line == null) || (line.length() == 0));
-        return lineIsNullOrEmpty ? "" : String.format("%s%s", getIndentation(), line);
+        return (line == null || line.isBlank()) ? "" : String.format("%s%s", getIndentation(), line);
     }
 
     private String getIndentation() {
