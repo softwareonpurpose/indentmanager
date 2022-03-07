@@ -1,4 +1,3 @@
-
 /*
   Copyright 2021 - 2022 Craig A. Stockton
   <p>
