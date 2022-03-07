@@ -13,7 +13,7 @@ At this time, IndentManager must be built locally, added to a given Java project
 IndentManager is released under the [Apache 2.0 license](LICENSE).
 
 ```
-Copyright 2021 Craig A. Stockton
+Copyright 2021 - 2022 Craig A. Stockton
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
