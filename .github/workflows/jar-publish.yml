@@ -1,31 +1,4 @@
 
-Skip to content
-Pull requests
-Issues
-Marketplace
-Explore
-@CarlosIbarraTGS
-softwareonpurpose /
-indentmanager
-Public
-
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-
-    Insights
-
-indentmanager/.github/workflows/gradle-publish.yml
-@CarlosIbarraTGS
-CarlosIbarraTGS Update gradle-publish.yml
-Latest commit d66b495 2 minutes ago
-History
-1 contributor
-35 lines (29 sloc) 981 Bytes
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
 # separate terms of service, privacy policy, and support
